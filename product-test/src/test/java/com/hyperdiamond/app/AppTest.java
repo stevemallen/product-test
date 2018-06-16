@@ -1,38 +1,61 @@
 package com.hyperdiamond.app;
 
-import junit.framework.Test;
+import javax.money.Monetary;
+import javax.money.MonetaryAmount;
+
+import org.javamoney.moneta.FastMoney;
+import org.junit.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertThat;
 
 /**
- * Unit test for simple App.
+ * Unit tests for the checkout app
  */
-public class AppTest 
-    extends TestCase
+public class AppTest extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
+    
+	@Test
+    public void testCheckoutSingleItem()
     {
-        super( testName );
+		CheckoutService checkoutService = new CheckoutServiceImpl();
+		Basket basket = new Basket();
+		basket.add(new Apple());
+		MonetaryAmount total = checkoutService.totalCost(basket);
+		assertEquals("Incorrect total", FastMoney.of(0.60, Monetary.getCurrency("GBP")), total);
     }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
+	
+	@Test
+    public void testCheckoutMulipleItems()
     {
-        return new TestSuite( AppTest.class );
+		CheckoutService checkoutService = new CheckoutServiceImpl();
+		Basket basket = new Basket();
+		basket.add(new Apple(), 3);
+		basket.add(new Orange(), 1);
+		MonetaryAmount total = checkoutService.totalCost(basket);
+		assertEquals("Incorrect total", FastMoney.of(2.05, Monetary.getCurrency("GBP")), total);
     }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
+	
+	@Test
+    public void testEmptyBasket()
     {
-        assertTrue( true );
+		CheckoutService checkoutService = new CheckoutServiceImpl();
+		Basket basket = new Basket();
+		MonetaryAmount total = checkoutService.totalCost(basket);
+		assertEquals("Incorrect total", FastMoney.of(0, Monetary.getCurrency("GBP")), total);
     }
+	
+	@Test
+    public void testBadInput()
+    {
+		try {
+			Basket basket = new Basket();
+			basket.add(new Apple(), 0);
+			fail();
+		} catch (IllegalArgumentException e) {
+			assertThat(e.getMessage(), is("quantity must be greater than zero"));
+		}
+    }
+	
+	
 }

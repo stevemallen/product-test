@@ -11,8 +11,23 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.12</version>
       <scope>test</scope>
+    </dependency>
+    <!--
+      Money/Currency classes (will probably be in Java 10)
+      https://jcp.org/en/jsr/detail?id=354 
+      
+      To provide an API for handling and calculating monetary amounts
+      To define classes representing currencies and monetary amounts, as well as monetary rounding
+      To deal with currency exchange rates
+      To deal with formatting and parsing of currencies and monetary amounts
+      
+    -->
+    <dependency>
+        <groupId>org.javamoney</groupId>
+        <artifactId>moneta</artifactId>
+        <version>1.1</version>
     </dependency>
   </dependencies>
 </project>
