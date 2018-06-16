@@ -11,7 +11,7 @@ import javax.money.MonetaryAmount;
  */
 public class BasketItem {
 
-	private Product product = null;
+	private Product product = null; // reference to the (singleton) product type
 	private int quantity = 1;
 
 	public BasketItem(Product product, int quantity) {
@@ -26,11 +26,23 @@ public class BasketItem {
 	public MonetaryAmount getPrice() {
 		return product.getPrice();
 	}
+	
+	public Product getProduct() {
+		return product;
+	}
 
 	public int getQuantity() {
 		return quantity;
 	}
 
+	@Override
+	public String toString() {
+		if (quantity > 1) {
+			return product + ": " + quantity;
+		} else {
+			return product.toString();
+		}
+	}
 	
 
 }
