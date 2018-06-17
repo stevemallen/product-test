@@ -62,6 +62,40 @@ public class AppTest extends TestCase {
 	}
 	
 	@Test
+	public void testThreeForTwoOranges() {
+		
+		CheckoutService discountCheckout = new CheckoutServiceImpl();
+		ThreeForTwo threeForTwo = new ThreeForTwo(Product.getOrange());
+		discountCheckout.addDiscountOffer(threeForTwo);
+		
+		basket.empty();
+		basket.add(Product.getOrange(), 2);
+		assertEquals("Incorrect total for basket: " + basket, FastMoney.of(0.50, Monetary.getCurrency("GBP")),
+				discountCheckout.totalCost(basket));
+		
+		// 3rd one free
+		basket.add(Product.getOrange());
+		assertEquals("Incorrect total for basket: " + basket, FastMoney.of(0.50, Monetary.getCurrency("GBP")),
+				discountCheckout.totalCost(basket));
+		
+		// 4 orange = price of 2 (3) + 1
+		basket.add(Product.getOrange());
+		assertEquals("Incorrect total for basket: " + basket, FastMoney.of(0.75, Monetary.getCurrency("GBP")),
+				discountCheckout.totalCost(basket));
+		
+		// 5 orange = price of 2 (3) + 2
+		basket.add(Product.getOrange());
+		assertEquals("Incorrect total for basket: " + basket, FastMoney.of(1, Monetary.getCurrency("GBP")),
+				discountCheckout.totalCost(basket));
+		
+		// 6 orange = price of 4 (3)
+		basket.add(Product.getOrange());
+		assertEquals("Incorrect total for basket: " + basket, FastMoney.of(1, Monetary.getCurrency("GBP")),
+				discountCheckout.totalCost(basket));
+		
+	}
+	
+	@Test
 	public void testBogofApples() {
 		
 		CheckoutService discountCheckout = new CheckoutServiceImpl();

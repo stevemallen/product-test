@@ -27,10 +27,9 @@ public class BuyOneGetOneFree implements DiscountOffer {
 		// by the unit value of the product
 		long count = basket.productCount(product);
 		if (count > 1) {
-			long freeCount = count / 2; // divide by 2 and round down
-			MonetaryAmount unitPrice;
-			unitPrice = product.getPrice();
-			MonetaryAmount reduction = unitPrice.multiply(freeCount);
+			long numberOfSets = count / 2; // divide by 2 and round down
+			MonetaryAmount unitPrice = product.getPrice();
+			MonetaryAmount reduction = unitPrice.multiply(numberOfSets);
 			return amount.subtract(reduction);
 		} else {
 			// only one product, no discount
