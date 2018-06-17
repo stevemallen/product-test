@@ -5,6 +5,14 @@ import javax.money.MonetaryAmount;
 
 import org.javamoney.moneta.FastMoney;
 import org.junit.Test;
+
+import com.hyperdiamond.app.checkout.Basket;
+import com.hyperdiamond.app.checkout.Product;
+import com.hyperdiamond.app.discount.strategy.BuyOneGetOneFree;
+import com.hyperdiamond.app.discount.strategy.ThreeForTwo;
+import com.hyperdiamond.app.services.CheckoutService;
+import com.hyperdiamond.app.services.CheckoutServiceImpl;
+
 import junit.framework.TestCase;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;

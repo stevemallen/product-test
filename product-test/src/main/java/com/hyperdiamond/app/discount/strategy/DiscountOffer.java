@@ -1,6 +1,8 @@
-package com.hyperdiamond.app;
+package com.hyperdiamond.app.discount.strategy;
 
 import javax.money.MonetaryAmount;
+
+import com.hyperdiamond.app.checkout.Basket;
 
 /**
  * A rule which applies a discount to a shopping basket based on 

@@ -1,4 +1,4 @@
-package com.hyperdiamond.app;
+package com.hyperdiamond.app.services;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -7,6 +7,10 @@ import javax.money.Monetary;
 import javax.money.MonetaryAmount;
 
 import org.javamoney.moneta.FastMoney;
+
+import com.hyperdiamond.app.checkout.Basket;
+import com.hyperdiamond.app.checkout.BasketItem;
+import com.hyperdiamond.app.discount.strategy.DiscountOffer;
 
 /**
  * A service which calculates the total cost of basket of items 

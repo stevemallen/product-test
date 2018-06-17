@@ -1,4 +1,4 @@
-package com.hyperdiamond.app;
+package com.hyperdiamond.app.checkout;
 
 import javax.money.MonetaryAmount;
 

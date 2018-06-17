@@ -1,6 +1,9 @@
-package com.hyperdiamond.app;
+package com.hyperdiamond.app.services;
 
 import javax.money.MonetaryAmount;
+
+import com.hyperdiamond.app.checkout.Basket;
+import com.hyperdiamond.app.discount.strategy.DiscountOffer;
 
 /**
  * Represents a singleton service used to calculate the total cost of 

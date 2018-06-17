@@ -1,4 +1,6 @@
-package com.hyperdiamond.app;
+package com.hyperdiamond.app.discount.strategy;
+
+import com.hyperdiamond.app.checkout.Product;
 
 /**
  * A Buy One Get One Free offer on a particular Product (e.g. Apples)

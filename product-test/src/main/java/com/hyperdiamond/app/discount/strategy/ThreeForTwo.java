@@ -1,4 +1,6 @@
-package com.hyperdiamond.app;
+package com.hyperdiamond.app.discount.strategy;
+
+import com.hyperdiamond.app.checkout.Product;
 
 public class ThreeForTwo extends BuyNforMDiscountOffer {
 

@@ -1,6 +1,9 @@
-package com.hyperdiamond.app;
+package com.hyperdiamond.app.discount.strategy;
 
 import javax.money.MonetaryAmount;
+
+import com.hyperdiamond.app.checkout.Basket;
+import com.hyperdiamond.app.checkout.Product;
 
 /**
  * A discount strategy which implements the algorithm for buying N of a product

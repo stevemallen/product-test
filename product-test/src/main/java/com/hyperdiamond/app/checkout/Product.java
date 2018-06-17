@@ -1,4 +1,4 @@
-package com.hyperdiamond.app;
+package com.hyperdiamond.app.checkout;
 
 import javax.money.Monetary;
 import javax.money.MonetaryAmount;
@@ -41,7 +41,7 @@ public class Product {
 	}
 
 	// the standard unit price of a product
-	MonetaryAmount getPrice() {
+	public MonetaryAmount getPrice() {
 		return price;
 	}
 
