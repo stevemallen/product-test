@@ -32,6 +32,14 @@ public class AppTest extends TestCase {
 		MonetaryAmount total = checkoutService.totalCost(basket);
 		assertEquals("Incorrect total", FastMoney.of(0.60, Monetary.getCurrency("GBP")), total);
 	}
+	
+	@Test
+	public void testBananaInBasket() {
+		basket.empty();
+		basket.add(Product.getBanana());
+		MonetaryAmount total = checkoutService.totalCost(basket);
+		assertEquals("Incorrect total", FastMoney.of(0.20, Monetary.getCurrency("GBP")), total);
+	}
 
 	@Test
 	public void testCheckoutMulipleItems() {
@@ -42,6 +50,18 @@ public class AppTest extends TestCase {
 		basket.add(Product.getApple());
 		MonetaryAmount total = checkoutService.totalCost(basket);
 		assertEquals("Incorrect total", FastMoney.of(2.05, Monetary.getCurrency("GBP")), total);
+	}
+	
+	@Test
+	public void testMultipleBogof() {
+		basket.empty();
+		basket.add(Product.getApple());
+		basket.add(Product.getApple());
+		basket.add(Product.getApple());
+		basket.add(Product.getBanana());
+		basket.add(Product.getBanana());
+		MonetaryAmount total = checkoutService.totalCost(basket);
+		assertEquals("Incorrect total", FastMoney.of(1.40, Monetary.getCurrency("GBP")), total);
 	}
 
 	@Test

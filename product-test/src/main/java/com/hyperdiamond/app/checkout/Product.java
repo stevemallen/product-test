@@ -21,12 +21,16 @@ public class Product {
 	private final static MonetaryAmount ORANGE_UNIT_PRICE = FastMoney.of(0.25, Monetary.getCurrency("GBP"));
 	private final static String ORANGE_ID = "Orange";
 
+	private final static MonetaryAmount BANANA_UNIT_PRICE = FastMoney.of(0.20, Monetary.getCurrency("GBP"));
+	private final static String BANANA_ID = "Banana";
+	
 	// There is only one global instance of apple and orange - we don't need
 	// individual instances, since there is just a price and description for each
 	
 	private static Product apple = new Product(APPLE_ID, APPLE_UNIT_PRICE);
 	private static Product orange = new Product(ORANGE_ID, ORANGE_UNIT_PRICE);
-
+	private static Product banana = new Product(BANANA_ID, BANANA_UNIT_PRICE);
+	
 	private String id;
 	private MonetaryAmount price;
 
@@ -51,6 +55,10 @@ public class Product {
 
 	public static Product getOrange() {
 		return orange;
+	}
+	
+	public static Product getBanana() {
+		return banana;
 	}
 
 	@Override
