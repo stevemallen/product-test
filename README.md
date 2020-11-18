@@ -7,3 +7,5 @@ Java 8 required.  Uses JUnit 4.12 and JSR-354 (Java Money) for calculations.
 Uses FastMoney which sacrifices some precision for speed.
 
 
+test update
+
